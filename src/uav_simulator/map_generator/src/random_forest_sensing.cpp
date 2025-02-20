@@ -97,7 +97,7 @@ void RandomMapGenerate()
     x = rand_x(eng);
     y = rand_y(eng);
     w = rand_w(eng);
-    printf('coordination: x %d, y %d, w %d', x, y, w);
+    printf('coordination: x %lf, y %lf, w %lf', x, y, w);
     if (sqrt(pow(x - _init_x, 2) + pow(y - _init_y, 2)) < 2.0)
     {
       i--;
