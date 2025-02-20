@@ -99,22 +99,22 @@ void RandomMapGenerate()
     double x, y, w, h;
     // x = rand_x(eng);
     // y = rand_y(eng);
-    // w = rand_w(eng);
+    w = rand_w(eng);
     x = xs[i];
     y = ys[i];
-    w = zs[i];
+    // w = zs[i];
     std::cout << "coordination : x: " << x << " y: " << y << " w: " << w << std::endl;
-    if (sqrt(pow(x - _init_x, 2) + pow(y - _init_y, 2)) < 2.0)
-    {
-      i--;
-      continue;
-    }
+    // if (sqrt(pow(x - _init_x, 2) + pow(y - _init_y, 2)) < 2.0)
+    // {
+    //   i--;
+    //   continue;
+    // }
 
-    if (sqrt(pow(x - 19.0, 2) + pow(y - 0.0, 2)) < 2.0)
-    {
-      i--;
-      continue;
-    }
+    // if (sqrt(pow(x - 19.0, 2) + pow(y - 0.0, 2)) < 2.0)
+    // {
+    //   i--;
+    //   continue;
+    // }
 
     x = floor(x / _resolution) * _resolution + _resolution / 2.0;
     y = floor(y / _resolution) * _resolution + _resolution / 2.0;
