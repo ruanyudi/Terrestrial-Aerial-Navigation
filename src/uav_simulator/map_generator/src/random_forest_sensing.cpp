@@ -183,63 +183,63 @@ void RandomMapGenerate()
   // }
 
   // generate circle obs
-  for (int i = 0; i < circle_num_; ++i)
-  {
-    double x, y, z;
-    x = rand_x(eng);
-    y = rand_y(eng);
-    z = rand_z_(eng);
+  // for (int i = 0; i < circle_num_; ++i)
+  // {
+  //   double x, y, z;
+  //   x = rand_x(eng);
+  //   y = rand_y(eng);
+  //   z = rand_z_(eng);
 
-    if (sqrt(pow(x - _init_x, 2) + pow(y - _init_y, 2)) < 2.0)
-    {
-      i--;
-      continue;
-    }
+  //   if (sqrt(pow(x - _init_x, 2) + pow(y - _init_y, 2)) < 2.0)
+  //   {
+  //     i--;
+  //     continue;
+  //   }
 
-    if (sqrt(pow(x - 19.0, 2) + pow(y - 0.0, 2)) < 2.0)
-    {
-      i--;
-      continue;
-    }
+  //   if (sqrt(pow(x - 19.0, 2) + pow(y - 0.0, 2)) < 2.0)
+  //   {
+  //     i--;
+  //     continue;
+  //   }
 
-    x = floor(x / _resolution) * _resolution + _resolution / 2.0;
-    y = floor(y / _resolution) * _resolution + _resolution / 2.0;
-    z = floor(z / _resolution) * _resolution + _resolution / 2.0;
+  //   x = floor(x / _resolution) * _resolution + _resolution / 2.0;
+  //   y = floor(y / _resolution) * _resolution + _resolution / 2.0;
+  //   z = floor(z / _resolution) * _resolution + _resolution / 2.0;
 
-    // Eigen::Vector3d translate(x, y, z);
+  //   // Eigen::Vector3d translate(x, y, z);
 
-    double theta = rand_theta_(eng);
-    Eigen::Matrix3d rotate;
-    rotate << cos(theta), -sin(theta), 0.0, sin(theta), cos(theta), 0.0, 0, 0,
-        1;
+  //   double theta = rand_theta_(eng);
+  //   Eigen::Matrix3d rotate;
+  //   rotate << cos(theta), -sin(theta), 0.0, sin(theta), cos(theta), 0.0, 0, 0,
+  //       1;
 
-    double radius1 = z;
-    double radius2 = z;
+  //   double radius1 = z;
+  //   double radius2 = z;
 
-    // draw a circle centered at (x,y,z)
-    Eigen::Vector3d cpt;
-    for (double angle = 0.0; angle < 6.282; angle += _resolution / 2)
-    {
-      cpt(0) = 0.0;
-      cpt(1) = radius1 * cos(angle);
-      cpt(2) = radius2 * sin(angle);
+  //   // draw a circle centered at (x,y,z)
+  //   Eigen::Vector3d cpt;
+  //   for (double angle = 0.0; angle < 6.282; angle += _resolution / 2)
+  //   {
+  //     cpt(0) = 0.0;
+  //     cpt(1) = radius1 * cos(angle);
+  //     cpt(2) = radius2 * sin(angle);
 
-      // inflate
-      Eigen::Vector3d cpt_if;
-      for (int ifx = -0; ifx <= 0; ++ifx)
-        for (int ify = -0; ify <= 0; ++ify)
-          for (int ifz = -0; ifz <= 0; ++ifz)
-          {
-            cpt_if = cpt + Eigen::Vector3d(ifx * _resolution, ify * _resolution,
-                                           ifz * _resolution);
-            cpt_if = rotate * cpt_if + Eigen::Vector3d(x, y, z);
-            pt_random.x = cpt_if(0);
-            pt_random.y = cpt_if(1);
-            pt_random.z = cpt_if(2);
-            cloudMap.push_back(pt_random);
-          }
-    }
-  }
+  //     // inflate
+  //     Eigen::Vector3d cpt_if;
+  //     for (int ifx = -0; ifx <= 0; ++ifx)
+  //       for (int ify = -0; ify <= 0; ++ify)
+  //         for (int ifz = -0; ifz <= 0; ++ifz)
+  //         {
+  //           cpt_if = cpt + Eigen::Vector3d(ifx * _resolution, ify * _resolution,
+  //                                          ifz * _resolution);
+  //           cpt_if = rotate * cpt_if + Eigen::Vector3d(x, y, z);
+  //           pt_random.x = cpt_if(0);
+  //           pt_random.y = cpt_if(1);
+  //           pt_random.z = cpt_if(2);
+  //           cloudMap.push_back(pt_random);
+  //         }
+  //   }
+  // }
 
   cloudMap.width = cloudMap.points.size();
   cloudMap.height = 1;
